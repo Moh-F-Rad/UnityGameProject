@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
 
     public GameObject raceCar;
+    private Vector3 offset = new Vector3(0, 7, -11);
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = raceCar.transform.position;
+        transform.position = raceCar.transform.position + offset;
         
     }
 }
