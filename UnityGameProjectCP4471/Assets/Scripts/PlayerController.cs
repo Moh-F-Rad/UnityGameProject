@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Tachometer tachometer;
+    public int minRPM = 0;
+    public float currentRPM;
+
     public float speed = 10.0f;
     public float maxSpeed = 250f;
     public float bestGearshift = 0.5f;
@@ -19,11 +23,14 @@ public class PlayerController : MonoBehaviour
 
 
     public float forwardInput;
-    public bool isReady = false;
+    public bool isReady;
 
     // Start is called before the first frame update
     void Start()
     {
+        isReady = false;
+        currentRPM = minRPM;
+        tachometer.SetMinRPM(minRPM);
         boostTimer = 0;
         boosting = false;       
 
@@ -40,8 +47,12 @@ public class PlayerController : MonoBehaviour
         if ((isReady) && (speed < maxSpeed)) 
         {
             //forwardInput = Input.GetAxis("Vertical");
-            speed += best2ndGearshift;
+            speed += best4thGearshift;
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            currentRPM += 0.025f;
+            tachometer.SetRPM(currentRPM);
+            getCurrentRPM();
+
             
         }
 
@@ -59,7 +70,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    // To get the current RPM value, use this: tachometer.slider.value
+
+    public void getCurrentRPM()
+    {
+
+        //Debug.Log(tachometer.slider.value.ToString());
+    }
+
     //TODO: Create a function that triggers an event listener to make the boosting true and 
     // accelerates the car speed rapidly
+    // More comments here
 
 }
