@@ -29222,7 +29222,7 @@ GameObject:
   - component: {fileID: 1242943499}
   - component: {fileID: 1242943498}
   m_Layer: 5
-  m_Name: RMPText
+  m_Name: RPMText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

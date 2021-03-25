@@ -10,7 +10,6 @@ public class Tachometer : MonoBehaviour
     public Image fill;
     public Text rpmText;
     public Text gearNumber;
-
     public void SetMinRPM(float rpm)
     {
         slider.minValue = rpm;
@@ -18,11 +17,9 @@ public class Tachometer : MonoBehaviour
         fill.color = gradient.Evaluate(0f);
     }
 
-
     public void SetRPM(float rpm)
     {
         slider.value = rpm;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
-
 }

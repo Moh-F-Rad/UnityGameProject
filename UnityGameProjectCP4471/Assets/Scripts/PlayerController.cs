@@ -24,10 +24,10 @@ public class PlayerController : MonoBehaviour
     public int gearShiftCounter;
     public float rateOfTachometer;
 
-
+/*
     private float boostTimer;
     private float boostPeriod = 3;
-    private bool boosting;
+    private bool boosting;*/
 
     private bool gearShiftEnabled;
 
@@ -42,13 +42,11 @@ public class PlayerController : MonoBehaviour
         gearShiftEnabled = false;
         gearShiftCounter = 0;
         rateOfTachometer = 0.06f;
-        
         currentRPM = minRPM;
         tachometer.SetMinRPM(minRPM);
-        
-        boostTimer = 0;
-        boosting = false;       
-
+       
+/*        boostTimer = 0;
+        boosting = false; */      
     }
 
     // Update is called once per frame
@@ -57,8 +55,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isReady = true;
-            
-            //boosting = true;
         }
 
         if ((isReady) && (speed < maxSpeed)) 
@@ -72,9 +68,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentRPM < maxRPM)
             {
-
                 tachometer.rpmText.text = (currentRPM * 1000).ToString("0") + " RPM";
-
             }
             else
             {
@@ -83,9 +77,6 @@ public class PlayerController : MonoBehaviour
             }
 
             tachometer.SetRPM(currentRPM);
-
-            //getCurrentRPM();
-
         }
 
         if (gearShiftEnabled && gearShiftCounter < 5) 
@@ -204,5 +195,4 @@ public class PlayerController : MonoBehaviour
         //tachometer.SetRPM(minRPM);
 
     }
-
 }

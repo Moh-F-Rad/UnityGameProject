@@ -10,12 +10,6 @@ public class Timer : MonoBehaviour
     private float timeStart = 0;
     public bool isReady = false;
     private bool finnished = false;
-    //public CountdownController countdown;
-
-
-
-    //private GameObject winbox;
-
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +28,6 @@ public class Timer : MonoBehaviour
         {
             timeStart += Time.deltaTime;
             timerText.text = timeStart.ToString("F2") + " sec.";
-
         }
     }
 
@@ -45,7 +38,4 @@ public class Timer : MonoBehaviour
         
         //Debug.Log("Timer Stopped");
     }
-
-
-
 }
