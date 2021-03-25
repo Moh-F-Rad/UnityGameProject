@@ -9,6 +9,7 @@ public class Tachometer : MonoBehaviour
     public Gradient gradient;
     public Image fill;
     public Text rpmText;
+    public Text gearNumber;
 
     public void SetMinRPM(float rpm)
     {
