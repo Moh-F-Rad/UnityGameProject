@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Tachometer tachometer;
-    
+    public Timer timer;
+        
     public int minRPM = 0;
     public float currentRPM;
     
@@ -40,7 +41,6 @@ public class PlayerController : MonoBehaviour
         gearShiftCounter = 0;
         rateOfTachometer = 0.06f;
         
-
         currentRPM = minRPM;
         tachometer.SetMinRPM(minRPM);
         
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             tachometer.SetRPM(currentRPM);
 
             //getCurrentRPM();
-           
+
         }
 
         if (gearShiftEnabled && gearShiftCounter < 5) 
@@ -120,27 +120,22 @@ public class PlayerController : MonoBehaviour
                 if (gearShiftCounter == 5)
                 {
                     rateOfTachometer = 0.0166f;
+                    if (getCurrentRPM() >= 8.20)
+                    {
+                        rateOfTachometer = 0;
+                    }
                 }
-
-
-
             }
-            
-
-        
         }
-/*        if (boosting)
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EndPointWinBox")
         {
-            boostTimer += Time.deltaTime;
-            if (boostTimer > boostPeriod)
-            {
-                boostTimer = 0;
-                boosting = false;
-                //speed = something as regular speed 
-            }
-        }*/
-        
-        
+            timer.raceFinnished();
+        }
     }
 
     // To get the current RPM value, use this: tachometer.slider.value
