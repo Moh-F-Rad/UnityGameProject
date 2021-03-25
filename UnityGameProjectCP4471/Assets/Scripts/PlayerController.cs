@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Tachometer tachometer;
+    //public Speedometer speedometer;
+
     public Timer timer;
         
     public int minRPM = 0;
+    public float maxRPM = 9.99f;
     public float currentRPM;
     
     public float speed = 10.0f;
@@ -67,6 +70,19 @@ public class PlayerController : MonoBehaviour
             gearShiftEnabled = true;
 
             currentRPM += rateOfTachometer;
+
+            if (currentRPM < maxRPM)
+            {
+
+                tachometer.rpmText.text = (currentRPM * 1000).ToString("0") + " RPM";
+
+            }
+            else
+            {
+                //tachometer.SetRPM(maxRPM);
+                tachometer.rpmText.text = (maxRPM * 1000).ToString("0") + " RPM";
+            }
+
             tachometer.SetRPM(currentRPM);
 
             //getCurrentRPM();
@@ -85,21 +101,25 @@ public class PlayerController : MonoBehaviour
                 if ((currentTachometerValue > 6.50f) && (currentTachometerValue < 7.50f))
                 {
                     perfectTiming();
+                    tachometer.rpmText.color = Color.green;
                 }
                 else if (((currentTachometerValue > 3.50f) && (currentTachometerValue < 6.50f))
                      || ((currentTachometerValue > 7.50f) && currentTachometerValue < 9.0f))
                 {
                     goodTiming();
+                    tachometer.rpmText.color = Color.yellow;
                 }
 
                 else if (currentTachometerValue > 9.0f)
                 {
                     moderateTiming();
+                    tachometer.rpmText.color = Color.red;
                 }
 
                 else if (currentTachometerValue < 3.50f)
                 {
                     badTiming();
+                    tachometer.rpmText.color = Color.blue;
                 }
 
                 if (gearShiftCounter == 2)
@@ -136,6 +156,11 @@ public class PlayerController : MonoBehaviour
         {
             timer.raceFinnished();
         }
+
+        if (other.tag == "EndPointGameOver")
+        {
+            isReady = false;
+        }
     }
 
     // To get the current RPM value, use this: tachometer.slider.value
@@ -148,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     public void perfectTiming()
     {
-        speed += bestGearshift; 
+        speed += 25; 
         Debug.Log("Perfect!");
         currentRPM = 4.0f;
         //tachometer.SetRPM(minRPM);
@@ -156,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
     public void goodTiming()
     {
-        speed += best2ndGearshift;
+        speed += 10;
         Debug.Log("Good");
         currentRPM = 3.0f;
         //tachometer.SetRPM(minRPM);
@@ -164,7 +189,7 @@ public class PlayerController : MonoBehaviour
 
     public void moderateTiming()
     {
-        speed += best3rdGearshift;
+        speed += 5;
         Debug.Log("Not bad!");
         currentRPM = 2.0f;
         //tachometer.SetRPM(minRPM);
@@ -173,15 +198,11 @@ public class PlayerController : MonoBehaviour
 
     public void badTiming()
     {
-        speed += best4thGearshift;
+        speed += 2;
         Debug.Log("Oh NO!!");
         currentRPM = 1.0f;
         //tachometer.SetRPM(minRPM);
 
     }
-
-    //TODO: Create a function that triggers an event listener to make the boosting true and 
-    // accelerates the car speed rapidly
-    // More comments here
 
 }

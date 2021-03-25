@@ -8,6 +8,7 @@ public class Tachometer : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public Text rpmText;
 
     public void SetMinRPM(float rpm)
     {

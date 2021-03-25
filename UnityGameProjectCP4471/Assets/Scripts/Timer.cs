@@ -8,25 +8,32 @@ public class Timer : MonoBehaviour
 
     public Text timerText;
     private float timeStart = 0;
+    public bool isReady = false;
     private bool finnished = false;
-    
+    //public CountdownController countdown;
+
+
+
     //private GameObject winbox;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        timerText.text = timeStart.ToString("F2");
-
+        timerText.text = timeStart.ToString("F2") + " sec.";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!finnished)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isReady = true;
+        }
+        if (!finnished && isReady)
         {
             timeStart += Time.deltaTime;
-            timerText.text = timeStart.ToString("F2");
+            timerText.text = timeStart.ToString("F2") + " sec.";
 
         }
     }
