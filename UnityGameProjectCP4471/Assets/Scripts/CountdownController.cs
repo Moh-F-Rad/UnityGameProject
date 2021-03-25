@@ -31,8 +31,5 @@ public class CountdownController : MonoBehaviour
         countdownDisplay.gameObject.SetActive(false);
         isReady = true;
 
-
     }
-
-
 }
