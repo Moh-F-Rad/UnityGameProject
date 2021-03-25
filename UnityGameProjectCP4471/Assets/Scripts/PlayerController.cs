@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Tachometer tachometer;
-    //public Speedometer speedometer;
 
     public Timer timer;
         
@@ -97,6 +96,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 gearShiftCounter++;
+                tachometer.gearNumber.text = gearShiftCounter.ToString();
 
                 if ((currentTachometerValue > 6.50f) && (currentTachometerValue < 7.50f))
                 {
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     public void perfectTiming()
     {
-        speed += 25; 
+        speed += 15; 
         Debug.Log("Perfect!");
         currentRPM = 4.0f;
         //tachometer.SetRPM(minRPM);
