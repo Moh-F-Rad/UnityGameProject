@@ -7,6 +7,8 @@ public class Timer : MonoBehaviour
 {
 
     public Text timerText;
+    public Text bestRecord;
+    public float bestTime = 25f;
     private float timeStart = 0;
     public bool isReady = false;
     private bool finnished = false;
@@ -36,7 +38,15 @@ public class Timer : MonoBehaviour
     {
         finnished = true;
         timerText.color = Color.red;
-        
-        //Debug.Log("Timer Stopped");
+
+        if (timeStart < bestTime)
+        {
+            bestTime = timeStart;
+            bestRecord.text = "Best Time!\n"+timeStart.ToString("F2");
+        }
+
+        Debug.Log(bestTime);
+
+
     }
 }
