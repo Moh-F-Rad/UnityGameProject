@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Tachometer tachometer;
-
     public Timer timer;
+    public GameObject restartButton;
+    
         
     public int minRPM = 0;
     public float maxRPM = 9.99f;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float currentTachometerValue;
     public int gearShiftCounter;
     public float rateOfTachometer;
+    private bool isCoroutineExecuting = false;
 
 /*
     private float boostTimer;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        restartButton.gameObject.SetActive(false);
         isReady = false;
         gearShiftEnabled = false;
         gearShiftCounter = 0;
@@ -57,7 +60,7 @@ public class PlayerController : MonoBehaviour
             isReady = true;
         }
 
-        if ((isReady) && (speed < maxSpeed)) 
+        if ((isReady) && (speed < maxSpeed))
         {
             //forwardInput = Input.GetAxis("Vertical");
             speed += best4thGearshift;
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
             tachometer.SetRPM(currentRPM);
         }
+
 
         if (gearShiftEnabled && gearShiftCounter < 5) 
         {
@@ -138,7 +142,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
     }
 
     void OnTriggerEnter(Collider other)
@@ -151,6 +154,10 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "EndPointGameOver")
         {
             isReady = false;
+            StartCoroutine(ExecuteAfterTime(1f));
+            //waiter();
+            //restartButton.gameObject.SetActive(true);
+            
         }
     }
 
@@ -194,5 +201,20 @@ public class PlayerController : MonoBehaviour
         currentRPM = 1.0f;
         //tachometer.SetRPM(minRPM);
 
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        if (isCoroutineExecuting)
+            yield break;
+
+        isCoroutineExecuting = true;
+
+        yield return new WaitForSeconds(time);
+        restartButton.gameObject.SetActive(true);
+
+        // Code to execute after the delay
+
+        isCoroutineExecuting = false;
     }
 }

@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public bool isReady = false;
     private bool finnished = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
