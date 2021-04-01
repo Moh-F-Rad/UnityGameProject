@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Timer timer;
     public GameObject restartButton;
     public GameObject exitButton;
+    public GameObject bestTimeText;
     
     
         
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
-        
+        bestTimeText.gameObject.SetActive(false);
+
         isReady = false;
         gearShiftEnabled = false;
         gearShiftCounter = 0;
@@ -209,6 +211,7 @@ public class PlayerController : MonoBehaviour
         // Code to execute after the delay
         restartButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
+        bestTimeText.gameObject.SetActive(true);
 
         isCoroutineExecuting = false;
     }
