@@ -1,23 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public Tachometer tachometer;
     public Timer timer;
+    public Speedometer speedometer;
+
     public GameObject restartButton;
     public GameObject exitButton;
     public GameObject bestTimeText;
-    
-    
-        
+
+    public int countdownTime = 3;
+    public Text countdownDisplay;
+
     public int minRPM = 0;
     public float maxRPM = 9.99f;
     public float currentRPM;
     
     public float speed = 10.0f;
     public float maxSpeed = 250f;
+    public bool enginStarted;
     public float bestGearshift = 1.1f;
     public float best2ndGearshift = 0.5f;
     public float best3rdGearshift = 0.25f;
@@ -29,11 +34,6 @@ public class PlayerController : MonoBehaviour
     public float rateOfTachometer;
     private bool isCoroutineExecuting = false;
 
-/*
-    private float boostTimer;
-    private float boostPeriod = 3;
-    private bool boosting;*/
-
     private bool gearShiftEnabled;
 
 
@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(CountdownToStart());
+        enginStarted = false;
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
         bestTimeText.gameObject.SetActive(false);
@@ -53,41 +55,41 @@ public class PlayerController : MonoBehaviour
         rateOfTachometer = 0.06f;
         currentRPM = minRPM;
         tachometer.SetMinRPM(minRPM);
-       
-/*        boostTimer = 0;
-        boosting = false; */      
+         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isReady = true;
-        }
-
         if ((isReady) && (speed < maxSpeed))
         {
-            //forwardInput = Input.GetAxis("Vertical");
-            speed += best4thGearshift;
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            gearShiftEnabled = true;
-
-            currentRPM += rateOfTachometer;
-
-            if (currentRPM < maxRPM)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                tachometer.rpmText.text = (currentRPM * 1000).ToString("0") + " RPM";
-            }
-            else
-            {
-                //tachometer.SetRPM(maxRPM);
-                tachometer.rpmText.text = (maxRPM * 1000).ToString("0") + " RPM";
+                enginStarted = true;
             }
 
-            tachometer.SetRPM(currentRPM);
+            if (enginStarted)
+            {
+                speed += best4thGearshift;
+                transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+                gearShiftEnabled = true;
+
+                currentRPM += rateOfTachometer;
+
+                if (currentRPM < maxRPM)
+                {
+                    tachometer.rpmText.text = (currentRPM * 1000).ToString("0") + " RPM";
+                }
+                else
+                {
+                    //tachometer.SetRPM(maxRPM);
+                    tachometer.rpmText.text = (maxRPM * 1000).ToString("0") + " RPM";
+                }
+
+                tachometer.SetRPM(currentRPM);
+            }
         }
-
 
         if (gearShiftEnabled && gearShiftCounter < 5) 
         {
@@ -215,4 +217,25 @@ public class PlayerController : MonoBehaviour
 
         isCoroutineExecuting = false;
     }
+
+    public IEnumerator CountdownToStart()
+    {
+        while (countdownTime > 0)
+        {
+            countdownDisplay.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+            countdownTime--;
+        }
+
+        countdownDisplay.text = "GO!";
+
+        yield return new WaitForSeconds(1f);
+        isReady = true;
+        timer.isReady = true;
+        speedometer.isReady = true;
+        countdownDisplay.gameObject.SetActive(false);
+        
+    }
+
+
 }

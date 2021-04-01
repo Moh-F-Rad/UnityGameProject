@@ -20,16 +20,9 @@ public class Speedometer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isReady = true;
-        }
-
         if (isReady)
         {
-            
             speedometerText.text = player.speed.ToString("F1") + " km/h";
-
         }
     }
 }

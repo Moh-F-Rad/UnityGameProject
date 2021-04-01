@@ -9,5 +9,4 @@ public class ExitButtonController : MonoBehaviour
         Application.Quit();
         Debug.Log("Exit is cliked!");
     }
-
 }
