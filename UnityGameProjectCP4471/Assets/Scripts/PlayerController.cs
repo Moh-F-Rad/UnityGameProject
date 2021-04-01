@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Timer timer;
     public GameObject restartButton;
     
+    
         
     public int minRPM = 0;
     public float maxRPM = 9.99f;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         restartButton.gameObject.SetActive(false);
+        
         isReady = false;
         gearShiftEnabled = false;
         gearShiftCounter = 0;
@@ -155,9 +157,6 @@ public class PlayerController : MonoBehaviour
         {
             isReady = false;
             StartCoroutine(ExecuteAfterTime(1f));
-            //waiter();
-            //restartButton.gameObject.SetActive(true);
-            
         }
     }
 
@@ -166,7 +165,6 @@ public class PlayerController : MonoBehaviour
     public float getCurrentRPM()
     {
         return tachometer.slider.value;
-        //Debug.Log(tachometer.slider.value.ToString());
     }
 
     public void perfectTiming()
@@ -174,7 +172,6 @@ public class PlayerController : MonoBehaviour
         speed += 15; 
         Debug.Log("Perfect!");
         currentRPM = 4.0f;
-        //tachometer.SetRPM(minRPM);
     }
 
     public void goodTiming()
@@ -182,7 +179,6 @@ public class PlayerController : MonoBehaviour
         speed += 10;
         Debug.Log("Good");
         currentRPM = 3.0f;
-        //tachometer.SetRPM(minRPM);
     }
 
     public void moderateTiming()
@@ -190,8 +186,6 @@ public class PlayerController : MonoBehaviour
         speed += 5;
         Debug.Log("Not bad!");
         currentRPM = 2.0f;
-        //tachometer.SetRPM(minRPM);
-
     }
 
     public void badTiming()
@@ -199,8 +193,6 @@ public class PlayerController : MonoBehaviour
         speed += 2;
         Debug.Log("Oh NO!!");
         currentRPM = 1.0f;
-        //tachometer.SetRPM(minRPM);
-
     }
 
     IEnumerator ExecuteAfterTime(float time)
@@ -211,9 +203,9 @@ public class PlayerController : MonoBehaviour
         isCoroutineExecuting = true;
 
         yield return new WaitForSeconds(time);
-        restartButton.gameObject.SetActive(true);
 
         // Code to execute after the delay
+        restartButton.gameObject.SetActive(true);
 
         isCoroutineExecuting = false;
     }

@@ -8,6 +8,7 @@ TagManager:
   - EndPointWinBox
   - EndPointGameOver
   - RestartGameBtn
+  - ExitGameBtn
   layers:
   - Default
   - TransparentFX
