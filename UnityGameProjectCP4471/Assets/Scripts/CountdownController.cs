@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CountdownController : MonoBehaviour
 {
-
     public int countdownTime = 3;
     public Text countdownDisplay;
     public bool isReady = false;
@@ -30,6 +29,5 @@ public class CountdownController : MonoBehaviour
 
         countdownDisplay.gameObject.SetActive(false);
         isReady = true;
-
     }
 }
