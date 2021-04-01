@@ -16068,6 +16068,7 @@ MonoBehaviour:
   tachometer: {fileID: 1726686986}
   timer: {fileID: 644512650}
   restartButton: {fileID: 733082971}
+  exitButton: {fileID: 0}
   minRPM: 0
   maxRPM: 9.99
   currentRPM: 0
