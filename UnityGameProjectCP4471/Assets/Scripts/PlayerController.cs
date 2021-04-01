@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Tachometer tachometer;
     public Timer timer;
     public GameObject restartButton;
+    public GameObject exitButton;
     
     
         
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         restartButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
         
         isReady = false;
         gearShiftEnabled = false;
@@ -206,6 +208,7 @@ public class PlayerController : MonoBehaviour
 
         // Code to execute after the delay
         restartButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
 
         isCoroutineExecuting = false;
     }
