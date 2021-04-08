@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public Text timerText;
     public Text bestRecord;
-    public float bestTime = 25f;
+    public float bestTime;
     private float timeStart = 0;
     public bool isReady = false;
     private bool finnished = false;
@@ -15,6 +15,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bestTime = 59.59f;
         timerText.text = timeStart.ToString("F2") + " sec.";
     }
 
