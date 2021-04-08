@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     public Tachometer tachometer;
     public Timer timer;
     public Speedometer speedometer;
+    public PauseResume pauseResume;
 
     public GameObject restartButton;
     public GameObject exitButton;
     public GameObject bestTimeText;
+    public GameObject pauseButton;
 
     public int countdownTime = 3;
     public Text countdownDisplay;
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((isReady) && (speed < maxSpeed))
+        if ((isReady) && (speed < maxSpeed) && (!pauseResume.GamePaused))
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (gearShiftEnabled && gearShiftCounter < 5) 
+        if ((gearShiftEnabled && gearShiftCounter < 5) && (!pauseResume.GamePaused))
         {
             //Debug.Log("Able to shift the gear!!");
             currentTachometerValue = tachometer.slider.value;
@@ -156,6 +158,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "EndPointWinBox")
         {
+            
             timer.raceFinnished();
         }
 
@@ -163,6 +166,7 @@ public class PlayerController : MonoBehaviour
         {
             isReady = false;
             StartCoroutine(ExecuteAfterTime(1f));
+            pauseButton.SetActive(false);
         }
     }
 
