@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "EndPointWinBox")
         {
-            
+            //isReady = false;
             timer.raceFinnished();
         }
 
