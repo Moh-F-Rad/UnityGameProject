@@ -7,15 +7,18 @@ public class Timer : MonoBehaviour
 {
     public Text timerText;
     public Text bestRecord;
-    public float bestTime;
+    public float bestTime = 59.59f;
     private float timeStart = 0;
     public bool isReady = false;
     private bool finnished = false;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        bestTime = 59.59f;
+        //PlayerPrefs.SetFloat("highestScore", bestTime);
+        bestTime = PlayerPrefs.GetFloat("highestScore");
+        //bestTime = 59.59f;
         timerText.text = timeStart.ToString("F2") + " sec.";
     }
 
@@ -33,11 +36,19 @@ public class Timer : MonoBehaviour
     {
         finnished = true;
         timerText.color = Color.red;
+        //bestTime = PlayerPrefs.GetFloat("highscore");
 
         if (timeStart < bestTime)
         {
-            bestTime = timeStart;
-            bestRecord.text = "Best Time!\n"+timeStart.ToString("F2");
+            //bestTime = timeStart;
+
+            bestRecord.text = "New Record!\n" + timeStart.ToString("F2");
+            PlayerPrefs.SetFloat("highestScore", timeStart);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            bestRecord.text = "Try again!";
         }
         Debug.Log(bestTime);
     }

@@ -163,8 +163,7 @@ public class PlayerController : MonoBehaviour
             //isReady = false;
             timer.raceFinnished();
 
-
-            try
+/*            try
             {
                 sfxPlayer.PlayBrake();
             }
@@ -172,7 +171,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Something went wrong!");
             }
-
+*/
         }
 
         if (other.tag == "EndPointGameOver")
