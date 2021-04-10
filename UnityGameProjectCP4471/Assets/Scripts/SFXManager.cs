@@ -4,53 +4,26 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
-    public static AudioClip brakeSound, countdownSound, highSpeedSound, lowSpeedSound, idleSound, startToGoSound;
-    static AudioSource audioSource;
+    public AudioSource brake;
+    public AudioSource countDown;
+    public AudioSource startGo;
+    public AudioSource highSpeed;
+    public AudioSource lowSpeed;
+    public AudioSource idle;
 
-    // Start is called before the first frame update
-    void Start()
+    public void PlayBrake()
     {
-        brakeSound = Resources.Load<AudioClip>("Brake2");
-        countdownSound = Resources.Load<AudioClip>("CountDown");
-        highSpeedSound = Resources.Load<AudioClip>("High");
-        lowSpeedSound = Resources.Load<AudioClip>("Low");
-        idleSound = Resources.Load<AudioClip>("Idle");
-        startToGoSound = Resources.Load<AudioClip>("Start");
-
-        audioSource = GetComponent<AudioSource>();
+        Debug.Log("Brake sound plays! ");
+        brake.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    public void PlayCountDown() { countDown.Play(); }
 
-    public static void PlaySound(string clip)
-    {
-        switch (clip) {
-            case "Brake2":
-                audioSource.PlayOneShot(brakeSound);
-                break;
+    public void PlayStartToGo() { startGo.Play(); }
 
-            case "CountDown":
-                audioSource.PlayOneShot(countdownSound);
-                break;
+    public void PlayHighSpeed() { highSpeed.Play(); }
 
-            case "High":
-                audioSource.PlayOneShot(highSpeedSound);
-                break;
+    public void PlayLowSpeed() { lowSpeed.Play(); }
 
-            case "Low":
-                audioSource.PlayOneShot(lowSpeedSound);
-                break;
-
-            case "Idle":
-                audioSource.PlayOneShot(idleSound);
-                break;
-
-            case "Start":
-                audioSource.PlayOneShot(startToGoSound);
-                break;
-        }
-    }
+    public void PlayIdle() { idle.Play(); }
 }

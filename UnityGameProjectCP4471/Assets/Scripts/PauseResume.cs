@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PauseResume : MonoBehaviour
 {
     public GameObject PauseScreen;
     public GameObject PauseButton;
+    public SFXManager sfx;
 
     public bool GamePaused;
 
