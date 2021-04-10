@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Timer timer;
     public Speedometer speedometer;
     public PauseResume pauseResume;
+    public SFXManager sfxPlayer;
 
     public GameObject restartButton;
     public GameObject exitButton;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountdownToStart());
+        //SFXManager.PlaySound("CountDown");
         enginStarted = false;
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
@@ -160,6 +162,17 @@ public class PlayerController : MonoBehaviour
         {
             //isReady = false;
             timer.raceFinnished();
+
+
+            try
+            {
+                sfxPlayer.PlayBrake();
+            }
+            catch (System.NullReferenceException ex)
+            {
+                Debug.Log("Something went wrong!");
+            }
+
         }
 
         if (other.tag == "EndPointGameOver")
