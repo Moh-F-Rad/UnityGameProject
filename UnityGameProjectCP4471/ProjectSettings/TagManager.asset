@@ -9,6 +9,7 @@ TagManager:
   - EndPointGameOver
   - RestartGameBtn
   - ExitGameBtn
+  - NearEndPoint
   layers:
   - Default
   - TransparentFX

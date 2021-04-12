@@ -32,6 +32,16 @@ public class PauseResume : MonoBehaviour
         GamePaused = true;
         PauseScreen.SetActive(true);
         PauseButton.SetActive(false);
+
+        try
+        {
+            sfx.PlayBrake();
+        }
+        catch (System.NullReferenceException ex)
+        {
+            Debug.Log("Something went wrong!");
+        }
+
     }
 
     public void ResumeGame()

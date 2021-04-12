@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject exitButton;
     public GameObject bestTimeText;
     public GameObject pauseButton;
+    public GameObject nearEndPoint;
 
     public int countdownTime = 3;
     public Text countdownDisplay;
@@ -162,16 +163,6 @@ public class PlayerController : MonoBehaviour
         {
             //isReady = false;
             timer.raceFinnished();
-
-/*            try
-            {
-                sfxPlayer.PlayBrake();
-            }
-            catch (System.NullReferenceException ex)
-            {
-                Debug.Log("Something went wrong!");
-            }
-*/
         }
 
         if (other.tag == "EndPointGameOver")
@@ -179,6 +170,18 @@ public class PlayerController : MonoBehaviour
             isReady = false;
             StartCoroutine(ExecuteAfterTime(1f));
             pauseButton.SetActive(false);
+        }
+
+        if (other.tag == "NearEndPoint")
+        {
+            try
+            {
+                sfxPlayer.PlayBrake();
+            }
+            catch (System.NullReferenceException ex)
+            {
+                Debug.Log("Something went wrong!");
+            }
         }
     }
 
