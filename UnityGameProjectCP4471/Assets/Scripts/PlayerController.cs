@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountdownToStart());
+        sfxPlayer.PlayCountDown();
         //SFXManager.PlaySound("CountDown");
         enginStarted = false;
         restartButton.gameObject.SetActive(false);
@@ -134,14 +135,20 @@ public class PlayerController : MonoBehaviour
 
                 //sfxPlayer.PlayHighSpeed();
                 tachometer.gearNumber.text = gearShiftCounter.ToString();
+                if ((currentTachometerValue >= 6.85f) && (currentTachometerValue <= 7.15f))
+                {
+                    excellentTiming();
+                    tachometer.rpmText.color = Color.black;
+                }
 
-                if ((currentTachometerValue > 6.50f) && (currentTachometerValue < 7.50f))
+                if ((currentTachometerValue >= 6.50f) && (currentTachometerValue < 6.85f)
+                    || (currentTachometerValue > 7.15f) && (currentTachometerValue <= 7.50f))
                 {
                     perfectTiming();
                     tachometer.rpmText.color = Color.green;
                 }
-                else if (((currentTachometerValue > 3.50f) && (currentTachometerValue < 6.50f))
-                     || ((currentTachometerValue > 7.50f) && currentTachometerValue < 9.0f))
+                else if (((currentTachometerValue >= 3.50f) && (currentTachometerValue < 6.50f))
+                     || ((currentTachometerValue > 7.50f) && currentTachometerValue <= 9.0f))
                 {
                     goodTiming();
                     tachometer.rpmText.color = Color.yellow;
@@ -231,6 +238,13 @@ public class PlayerController : MonoBehaviour
         return tachometer.slider.value;
     }
 
+    public void excellentTiming()
+    {
+        speed += 20;
+        Debug.Log("Excellent!");
+        currentRPM = 5.0f;
+    }
+
     public void perfectTiming()
     {
         speed += 15; 
@@ -282,12 +296,21 @@ public class PlayerController : MonoBehaviour
         {
             countdownDisplay.text = countdownTime.ToString();
             yield return new WaitForSeconds(1f);
+            if (countdownTime != 1)
+            {
+                sfxPlayer.PlayCountDown();
+            }
+            if (countdownTime == 1)
+            {
+                sfxPlayer.PlayStartToGo();
+            }
             countdownTime--;
         }
 
         countdownDisplay.text = "GO!";
 
         yield return new WaitForSeconds(1f);
+        
         isReady = true;
         timer.isReady = true;
         speedometer.isReady = true;

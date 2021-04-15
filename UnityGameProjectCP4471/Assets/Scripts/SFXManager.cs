@@ -13,7 +13,6 @@ public class SFXManager : MonoBehaviour
 
     public void PlayBrake()
     {
-        //Debug.Log("Brake sound plays! ");
         brake.Play();
     }
 
