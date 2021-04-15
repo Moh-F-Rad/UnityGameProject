@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            bestRecord.text = "Try again! Your personal best is" +bestTime.ToString("F2");
+            bestRecord.text = "Try again! Your personal best is " +bestTime.ToString("F2");
         }
         Debug.Log(bestTime);
     }
