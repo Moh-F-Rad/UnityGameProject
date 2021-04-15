@@ -41880,7 +41880,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 1, g: 0.98716855, b: 0.05098039, a: 1}
+=======
+  m_Color: {r: 1, g: 0.5635229, b: 0.05098039, a: 1}
+>>>>>>> main
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
