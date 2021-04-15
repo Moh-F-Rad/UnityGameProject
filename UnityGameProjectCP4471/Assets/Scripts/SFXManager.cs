@@ -21,7 +21,44 @@ public class SFXManager : MonoBehaviour
 
     public void PlayStartToGo() { startGo.Play(); }
 
-    public void PlayHighSpeed() { highSpeed.Play(); }
+    public void PlaySpeedGear1()
+    {
+        highSpeed.pitch = 0.75f;
+        highSpeed.Play();
+    }
+
+    public void PlaySpeedGear2()
+    {
+        highSpeed.pitch = 0.80f;
+        highSpeed.Play();
+    }
+
+    public void PlaySpeedGear3()
+    {
+        highSpeed.pitch = 0.85f;
+        highSpeed.Play();
+    }
+    public void PlaySpeedGear4()
+    {
+        highSpeed.pitch = 0.90f;
+        highSpeed.Play();
+    }
+
+    public void PlaySpeedGear5()
+    {
+        highSpeed.pitch = 1;
+        highSpeed.Play();
+    }
+
+    public void StopHighSpeedSFX()
+    {
+        highSpeed.Stop();
+    }
+
+    public void StopLoWSpeedSFX()
+    {
+        lowSpeed.Stop();
+    }
 
     public void PlayLowSpeed() { lowSpeed.Play(); }
 

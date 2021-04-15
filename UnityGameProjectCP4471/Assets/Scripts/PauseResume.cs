@@ -8,6 +8,9 @@ public class PauseResume : MonoBehaviour
     public GameObject PauseScreen;
     public GameObject PauseButton;
     public SFXManager sfx;
+    public PlayerController player;
+    private int currentGear;
+    public bool speedSFX_Required = true;
 
     public bool GamePaused;
 
@@ -16,6 +19,7 @@ public class PauseResume : MonoBehaviour
     void Start()
     {
         GamePaused = false;
+        
     }
 
     // Update is called once per frame
@@ -25,6 +29,8 @@ public class PauseResume : MonoBehaviour
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
+
+        currentGear = player.gearShiftCounter;
     }
 
     public void PauseGame()
@@ -36,6 +42,8 @@ public class PauseResume : MonoBehaviour
         try
         {
             sfx.PlayBrake();
+            sfx.StopHighSpeedSFX();
+            sfx.StopLoWSpeedSFX();
         }
         catch (System.NullReferenceException ex)
         {
@@ -49,5 +57,33 @@ public class PauseResume : MonoBehaviour
         GamePaused = false;
         PauseScreen.SetActive(false);
         PauseButton.SetActive(true);
+        Debug.Log(currentGear.ToString());
+
+        if (speedSFX_Required)
+        {
+            switch (currentGear)
+            {
+                case 1:
+                    sfx.PlaySpeedGear1();
+                    break;
+                case 2:
+                    sfx.PlaySpeedGear2();
+                    break;
+                case 3:
+                    sfx.PlaySpeedGear3();
+                    break;
+                case 4:
+                    sfx.PlaySpeedGear4();
+                    break;
+                case 5:
+                    sfx.PlaySpeedGear5();
+                    break;
+            }
+        }
+        else {
+            sfx.StopHighSpeedSFX();
+            sfx.StopLoWSpeedSFX();
+        }
+        
     }
 }
