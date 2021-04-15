@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountdownToStart());
+        sfxPlayer.PlayIdle();
         sfxPlayer.PlayCountDown();
         //SFXManager.PlaySound("CountDown");
         enginStarted = false;
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((isReady) && (speed < maxSpeed) && (!pauseResume.GamePaused))
         {
+            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 enginStarted = true;
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
                 speed += best4thGearshift;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
+                
                 //sfxPlayer.PlayHighSpeed();
                 gearShiftEnabled = true;
 
@@ -107,13 +110,16 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                
                 gearShiftCounter++;
+                
 
                 if (speedSFX_Required)
                 {
                     switch (gearShiftCounter)
                     {
                         case 1:
+                            sfxPlayer.StopIdleSFX();
                             sfxPlayer.PlaySpeedGear1();
                             break;
                         case 2:
