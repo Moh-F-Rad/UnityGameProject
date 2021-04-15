@@ -23993,6 +23993,7 @@ MonoBehaviour:
   PauseButton: {fileID: 701342388}
   sfx: {fileID: 912342181}
   player: {fileID: 644512648}
+  speedSFX_Required: 1
   GamePaused: 0
 --- !u!114 &968758449
 MonoBehaviour:
@@ -41787,14 +41788,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.98985136, g: 1, b: 0.051886797, a: 1}
+  m_Color: {r: 1, g: 0.5635229, b: 0.05098039, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 110
+    m_FontSize: 85
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
