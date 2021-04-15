@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public int gearShiftCounter;
     public float rateOfTachometer;
     private bool isCoroutineExecuting = false;
+    private bool speedSFX_Required = true;
 
     private bool gearShiftEnabled;
 
@@ -75,9 +76,10 @@ public class PlayerController : MonoBehaviour
 
             if (enginStarted)
             {
+
                 speed += best4thGearshift;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
-
+                //sfxPlayer.PlayHighSpeed();
                 gearShiftEnabled = true;
 
                 currentRPM += rateOfTachometer;
@@ -100,10 +102,37 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("Able to shift the gear!!");
             currentTachometerValue = tachometer.slider.value;
+            //sfxPlayer.PlayHighSpeed();
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 gearShiftCounter++;
+
+                if (speedSFX_Required)
+                {
+                    switch (gearShiftCounter)
+                    {
+                        case 1:
+                            sfxPlayer.PlaySpeedGear1();
+                            break;
+                        case 2:
+                            sfxPlayer.PlaySpeedGear2();
+                            break;
+                        case 3:
+                            sfxPlayer.PlaySpeedGear3();
+                            break;
+                        case 4:
+                            sfxPlayer.PlaySpeedGear4();
+                            break;
+                        case 5:
+                            sfxPlayer.PlaySpeedGear5();
+                            break;
+                    }
+
+                }
+                
+
+                //sfxPlayer.PlayHighSpeed();
                 tachometer.gearNumber.text = gearShiftCounter.ToString();
 
                 if ((currentTachometerValue > 6.50f) && (currentTachometerValue < 7.50f))
@@ -162,7 +191,9 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "EndPointWinBox")
         {
             //isReady = false;
+            
             timer.raceFinnished();
+            pauseResume.speedSFX_Required = false;
         }
 
         if (other.tag == "EndPointGameOver")
@@ -176,7 +207,15 @@ public class PlayerController : MonoBehaviour
         {
             try
             {
+                //gearShiftCounter = 0;
+                sfxPlayer.StopHighSpeedSFX();
+                
+                //sfxPlayer.PlaySpeedGear3();
                 sfxPlayer.PlayBrake();
+                sfxPlayer.PlayLowSpeed();
+                sfxPlayer.StopLoWSpeedSFX();
+                sfxPlayer.PlayIdle();
+
             }
             catch (System.NullReferenceException ex)
             {
