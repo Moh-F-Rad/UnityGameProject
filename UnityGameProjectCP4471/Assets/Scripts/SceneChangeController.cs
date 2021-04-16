@@ -19,7 +19,7 @@ public class SceneChangeController : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
-        loadingScreen.SetActive(true);
+        //loadingScreen.SetActive(true);
 
         while (!operation.isDone)
         {
