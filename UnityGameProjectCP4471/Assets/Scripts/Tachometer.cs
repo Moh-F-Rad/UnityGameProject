@@ -9,6 +9,7 @@ public class Tachometer : MonoBehaviour
     public Gradient gradient;
     public Image fill;
     public Text rpmText;
+    public Text messageText;
     public Text gearNumber;
     public bool gameIsOver = false;
     public void SetMinRPM(float rpm)
