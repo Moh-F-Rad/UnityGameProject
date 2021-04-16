@@ -1,5 +1,6 @@
 # UnityGameProject
 (Programmr Analyst Co Op - College of the North Atlantic)
+
 This is game project created in order to be submitted as "CP4471 Emerging Trends in Software" course project.
 
 ===== INSTRUCTIONS
