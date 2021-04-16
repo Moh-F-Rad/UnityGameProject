@@ -186,6 +186,9 @@ public class PlayerController : MonoBehaviour
         {
             timer.raceFinnished();
             pauseResume.speedSFX_Required = false;
+            speedometer.isReady = false;
+            
+            //enginStarted = false;
         }
 
         if (other.tag == "EndPointGameOver")
