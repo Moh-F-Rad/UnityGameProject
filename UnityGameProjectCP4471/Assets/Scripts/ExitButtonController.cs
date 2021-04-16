@@ -7,6 +7,6 @@ public class ExitButtonController : MonoBehaviour
     public void exit()
     {
         Application.Quit();
-        Debug.Log("Exit is cliked!");
+        //Debug.Log("Exit is cliked!");
     }
 }

@@ -30,4 +30,10 @@ public class SceneChangeController : MonoBehaviour
         }
     }
 
+    public void exit()
+    {
+        Application.Quit();
+        //Debug.Log("Exit is cliked!");
+    }
+
 }
