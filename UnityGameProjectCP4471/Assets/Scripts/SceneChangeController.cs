@@ -11,7 +11,7 @@ public class SceneChangeController : MonoBehaviour
     public Text progressText;
     public void LoadMainScene(int sceneIndex)
     {
-        Debug.Log("Got the click event! ");
+        //Debug.Log("Got the click event! ");
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
 
