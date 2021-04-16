@@ -10,20 +10,16 @@ public class PlayerController : MonoBehaviour
     public Speedometer speedometer;
     public PauseResume pauseResume;
     public SFXManager sfxPlayer;
-
     public GameObject restartButton;
     public GameObject exitButton;
     public GameObject bestTimeText;
     public GameObject pauseButton;
     public GameObject nearEndPoint;
-
     public int countdownTime = 3;
     public Text countdownDisplay;
-
     public int minRPM = 0;
     public float maxRPM = 9.99f;
     public float currentRPM;
-    
     public float speed = 10.0f;
     public float maxSpeed = 250f;
     public bool enginStarted;
@@ -38,10 +34,7 @@ public class PlayerController : MonoBehaviour
     public float rateOfTachometer;
     private bool isCoroutineExecuting = false;
     private bool speedSFX_Required = true;
-
     private bool gearShiftEnabled;
-
-
     public float forwardInput;
     public bool isReady;
 
@@ -63,15 +56,13 @@ public class PlayerController : MonoBehaviour
         rateOfTachometer = 0.06f;
         currentRPM = minRPM;
         tachometer.SetMinRPM(minRPM);
-         
-    }
+     }
 
     // Update is called once per frame
     void Update()
     {
         if ((isReady) && (speed < maxSpeed) && (!pauseResume.GamePaused))
         {
-            
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 enginStarted = true;
@@ -79,13 +70,9 @@ public class PlayerController : MonoBehaviour
 
             if (enginStarted)
             {
-
                 speed += best4thGearshift;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
-                
-                //sfxPlayer.PlayHighSpeed();
                 gearShiftEnabled = true;
-
                 currentRPM += rateOfTachometer;
 
                 if (currentRPM < maxRPM)
@@ -104,17 +91,13 @@ public class PlayerController : MonoBehaviour
 
         if ((gearShiftEnabled && gearShiftCounter < 5) && (!pauseResume.GamePaused))
         {
-            //Debug.Log("Able to shift the gear!!");
-            currentTachometerValue = tachometer.slider.value;
-            //sfxPlayer.PlayHighSpeed();
-
+             currentTachometerValue = tachometer.slider.value;
+ 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
                 gearShiftCounter++;
-                
 
-                if (speedSFX_Required)
+                 if (speedSFX_Required)
                 {
                     switch (gearShiftCounter)
                     {
@@ -135,11 +118,9 @@ public class PlayerController : MonoBehaviour
                             sfxPlayer.PlaySpeedGear5();
                             break;
                     }
-
                 }
-                
 
-                //sfxPlayer.PlayHighSpeed();
+
                 tachometer.gearNumber.text = gearShiftCounter.ToString();
                 if ((currentTachometerValue >= 6.85f) && (currentTachometerValue <= 7.15f))
                 {
@@ -203,8 +184,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "EndPointWinBox")
         {
-            //isReady = false;
-            
             timer.raceFinnished();
             pauseResume.speedSFX_Required = false;
         }
@@ -216,23 +195,14 @@ public class PlayerController : MonoBehaviour
             sfxPlayer.PlayIdle();
             StartCoroutine(ExecuteAfterTime(1f));
             pauseButton.SetActive(false);
-
         }
-
 
         if (other.tag == "NearEndPoint")
         {
             try
             {
-                //gearShiftCounter = 0;
                 sfxPlayer.StopHighSpeedSFX();
-                
                 sfxPlayer.PlayBrake();
-                //sfxPlayer.PlayLowSpeed();
-                
-
-                
-
             }
             catch (System.NullReferenceException ex)
             {
@@ -254,7 +224,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Excellent!");
         currentRPM = 5.0f;
     }
-
     public void perfectTiming()
     {
         speed += 15; 
@@ -300,7 +269,6 @@ public class PlayerController : MonoBehaviour
         isCoroutineExecuting = false;
     }
 
-
     public IEnumerator CountdownToStart()
     {
         while (countdownTime > 0)
@@ -328,6 +296,4 @@ public class PlayerController : MonoBehaviour
         countdownDisplay.gameObject.SetActive(false);
         
     }
-
-
 }
