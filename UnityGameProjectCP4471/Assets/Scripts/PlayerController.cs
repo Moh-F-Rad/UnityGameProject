@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(CountdownToStart());
         sfxPlayer.PlayIdle();
         sfxPlayer.PlayCountDown();
-        //SFXManager.PlaySound("CountDown");
+
         enginStarted = false;
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
@@ -212,9 +212,13 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "EndPointGameOver")
         {
             isReady = false;
+            sfxPlayer.StopLoWSpeedSFX();
+            sfxPlayer.PlayIdle();
             StartCoroutine(ExecuteAfterTime(1f));
             pauseButton.SetActive(false);
+
         }
+
 
         if (other.tag == "NearEndPoint")
         {
@@ -223,11 +227,11 @@ public class PlayerController : MonoBehaviour
                 //gearShiftCounter = 0;
                 sfxPlayer.StopHighSpeedSFX();
                 
-                //sfxPlayer.PlaySpeedGear3();
                 sfxPlayer.PlayBrake();
                 sfxPlayer.PlayLowSpeed();
-                sfxPlayer.StopLoWSpeedSFX();
-                sfxPlayer.PlayIdle();
+                
+
+                
 
             }
             catch (System.NullReferenceException ex)
@@ -295,6 +299,7 @@ public class PlayerController : MonoBehaviour
 
         isCoroutineExecuting = false;
     }
+
 
     public IEnumerator CountdownToStart()
     {

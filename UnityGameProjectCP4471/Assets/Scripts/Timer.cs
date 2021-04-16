@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public Text timerText;
     public Text bestRecord;
-    public float bestTime = 59.59f;
+    public float bestTime ; // 59.59f;
     private float timeStart = 0;
     public bool isReady = false;
     private bool finnished = false;
@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         //PlayerPrefs.SetFloat("highestScore", bestTime);
-        bestTime = PlayerPrefs.GetFloat("highestScore");
+        bestTime = PlayerPrefs.GetFloat("highestScore", 59.59f);
         //bestTime = 59.59f;
         timerText.text = timeStart.ToString("F2") + " sec.";
     }

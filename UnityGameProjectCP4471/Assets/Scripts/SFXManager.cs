@@ -61,7 +61,10 @@ public class SFXManager : MonoBehaviour
 
     public void PlayLowSpeed() { lowSpeed.Play(); }
 
-    public void PlayIdle() { idle.Play(); }
+    public void PlayIdle() 
+    { 
+       idle.Play();
+    }
 
     public void StopIdleSFX() 
     {
