@@ -228,7 +228,7 @@ public class PlayerController : MonoBehaviour
                 sfxPlayer.StopHighSpeedSFX();
                 
                 sfxPlayer.PlayBrake();
-                sfxPlayer.PlayLowSpeed();
+                //sfxPlayer.PlayLowSpeed();
                 
 
                 
