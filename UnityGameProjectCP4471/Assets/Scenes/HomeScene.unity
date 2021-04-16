@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13207549, g: 0.014328947, b: 0.014328947, a: 1}
+  m_Color: {r: 0.8207547, g: 0.63879496, b: 0.67553216, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.9528302, g: 0.87795025, b: 0.57079923, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8396226, g: 0.4509804, b: 0.0039604935, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -717,8 +717,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -540.7, y: -290.9}
-  m_SizeDelta: {x: 641.82825, y: 116.811035}
+  m_AnchoredPosition: {x: -540.7, y: -252}
+  m_SizeDelta: {x: 641.82825, y: 187.01584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698267581
 MonoBehaviour:
@@ -751,8 +751,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Use \"Spacebar\" to begin the race, and to shift the gear up!\n As simple
-    as that!"
+  m_Text: Use "Spacebar" to begin the race, and to shift the gear up! As simple as
+    that!
 --- !u!222 &698267582
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -835,8 +835,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.5739416, g: 0.49411765, b: 0.8, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 0.7137255, a: 1}
+    m_NormalColor: {r: 0.44470948, g: 0.36058205, b: 0.6886792, a: 1}
+    m_HighlightedColor: {r: 0.49803922, g: 0.23529412, b: 0.39928937, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6886792, g: 0.23713954, b: 0.23713954, a: 1}
+  m_Color: {r: 0.3764706, g: 0.23713954, b: 0.23713954, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1843,7 +1843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -540.7, y: -109}
+  m_AnchoredPosition: {x: -540.7, y: -67}
   m_SizeDelta: {x: 641.82825, y: 455.85156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112868897

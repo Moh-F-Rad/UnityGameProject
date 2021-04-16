@@ -126,6 +126,8 @@ public class PlayerController : MonoBehaviour
                 {
                     excellentTiming();
                     tachometer.rpmText.color = Color.black;
+                    tachometer.messageText.color = Color.black;
+                    tachometer.messageText.text = "Excellent!";
                 }
 
                 if ((currentTachometerValue >= 6.50f) && (currentTachometerValue < 6.85f)
@@ -133,24 +135,32 @@ public class PlayerController : MonoBehaviour
                 {
                     perfectTiming();
                     tachometer.rpmText.color = Color.green;
+                    tachometer.messageText.color = Color.green;
+                    tachometer.messageText.text = "Good!";
                 }
                 else if (((currentTachometerValue >= 3.50f) && (currentTachometerValue < 6.50f))
                      || ((currentTachometerValue > 7.50f) && currentTachometerValue <= 9.0f))
                 {
                     goodTiming();
                     tachometer.rpmText.color = Color.yellow;
+                    tachometer.messageText.color = Color.yellow;
+                    tachometer.messageText.text = "Not Bad!";
                 }
 
                 else if (currentTachometerValue > 9.0f)
                 {
                     moderateTiming();
                     tachometer.rpmText.color = Color.red;
+                    tachometer.messageText.color = Color.red;
+                    tachometer.messageText.text = "Too Late!";
                 }
 
                 else if (currentTachometerValue < 3.50f)
                 {
                     badTiming();
                     tachometer.rpmText.color = Color.blue;
+                    tachometer.messageText.color = Color.blue;
+                    //tachometer.messageText.text = "Oh NO!";
                 }
 
                 if (gearShiftCounter == 2)
