@@ -66,7 +66,12 @@ public class Timer : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highestSpeed", finalSpeed);
             bestSpeedRecordText.gameObject.SetActive(true);
-            bestSpeedRecordText.text = "New Speed Record!\n" + finalSpeed.ToString("F1");
+            bestSpeedRecordText.text = "New Record! " + finalSpeed.ToString("F1") + " km/h";
+        }
+
+        else {
+            bestSpeedRecordText.gameObject.SetActive(true);
+            bestSpeedRecordText.text = "Drive faster next time!";
         }
 
         //PlayerPrefs.DeleteAll();
